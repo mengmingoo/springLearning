@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--        常规方式-->
+    <!--    <bean id="userService" class="com.mengming.UserService">-->
+    <!--    </bean>-->
+
+    <!--        单例工厂方式-->
+    <!--    <bean id="userService" class="com.mengming.BeanFactory1" factory-method="getUserService">-->
+    <!--    </bean>-->
+
+    <!--
+        实例化工厂方式
+            1.创建实例化工厂类对象的bean
+            2.在要实例化对象的bean中加入factory-bean和factory-method
+    -->
+    <bean id="factory2" class="com.mengming.BeanFactory2"></bean>
+    <bean id="userService" class="com.mengming.BeanFactory2" factory-bean="factory2" factory-method="getUserService">
+    </bean>
+
+</beans>

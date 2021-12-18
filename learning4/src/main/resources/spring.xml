@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        property set注入
+        name    指向属性名称（自动生成的set方法）
+        ref     指向bean标签的id值 bean对象
+        value   对应的是具体的值
+    -->
+
+    <bean id="userDao" class="com.UserDao"></bean>
+    <bean id="userService" class="com.UserService">
+        <property name="userDao" ref="userDao"></property>
+        <property name="port" value="8888"></property>
+
+        <!--
+            注入list
+        -->
+        <property name="list">
+            <list>
+                <value>听歌</value>
+                <value>写代码</value>
+                <value>看书</value>
+            </list>
+        </property>
+
+        <!--map -->
+        <property name="card">
+            <map>
+                <entry key="idcard" value="888888888"></entry>
+            </map>
+        </property>
+        <!--set -->
+        <property name="games">
+            <set>
+                <value>lol</value>
+            </set>
+        </property>
+
+    </bean>
+
+</beans>

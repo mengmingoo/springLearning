@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--    注解注入-->
+    <context:annotation-config></context:annotation-config>
+    <!--    扫描器-->
+    <context:component-scan base-package="com.mengming"></context:component-scan>
+
+
+    <!--
+        Bean的作用城
+            1.单例作用域 singleton
+                默认，bean按实例化后会放置到单例缓存池中，每次获取的都是同一个bean对象
+            2.原型作用域 prototype
+                每次实例化时都是一个新的bean对象
+            通过scope属性设置
+    -->
+
+    <!--    <bean id="accountDao" class="com.mengming.dao.AccountDao" scope="prototype"></bean>-->
+
+    <!--
+        lazy-init懒加载
+            如果为true，老示容器启动时不会实例化bean对象，在程序调用才会实例化如果
+            为false，表示容器启动时自动实例化bean对象，
+            默认为什么要设置lazy-init为false？
+                1.可以提前知道潜在的配置问题
+                2.实例化的bean对象存在单例缓存池中，使用时不需要再实例化bean对象，提高程序的运行效率Bean对象的实例化
+        如何知道bean什么时候实例化
+            方式一：
+                1.在bean对象中定义实例化时调用的方法
+                2.在bean标签上设置init-method的方法，表示当bean对象实例化时会调用的方法
+            方式二
+                1.bean对象实现org.springframework.beans.factory.InitializingBean接口，并实现对应的方法，在bean对象被实例化时会自动调用
+    -->
+    <!--    <bean id="accountDao" class="com.mengming.dao.AccountDao" init-method="init" lazy-init="true"></bean>-->
+
+    <bean id="testDao" class="com.mengming.dao.TestDao" lazy-init="true"></bean>
+</beans>
