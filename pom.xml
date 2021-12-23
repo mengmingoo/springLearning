@@ -19,6 +19,8 @@
         <module>learning8</module>
         <module>learning9</module>
         <module>learning10</module>
+        <module>learning11</module>
+        <module>learning12</module>
     </modules>
 
     <dependencies>
